@@ -57,7 +57,7 @@
                                     <TextField fx:id="TypeField" prefHeight="41.0" prefWidth="179.0" />
                                  </children>
                               </HBox>
-                              <Button mnemonicParsing="false" text="NEW">
+                              <Button mnemonicParsing="false" onAction="#newButtonPressed" text="NEW">
                                  <font>
                                     <Font name="System Bold" size="16.0" />
                                  </font>

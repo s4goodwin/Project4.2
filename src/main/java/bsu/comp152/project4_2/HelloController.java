@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -43,6 +44,7 @@ public class HelloController extends Store implements Initializable {
 
     @FXML
     public void saveButtonPressed(ActionEvent event){   //for the save button
+        var pressedButton=(Button)event.getSource();
         var currentNameText=NameField.getText();  //creates variable for each textfield, and gets the text from it
         var currentPriceText=PriceField.getText();
         var currentItemType=TypeField.getText();
@@ -52,6 +54,14 @@ public class HelloController extends Store implements Initializable {
         Stock.add((MerchandiseItem) objName);       //added each field into stock
         Stock.add((MerchandiseItem) objPrice);
         Stock.add((MerchandiseItem) objType);
+    }
+    @FXML
+    public void newButtonPressed(ActionEvent event){
+        var pressedButton=(Button)event.getSource();  //when user selects new, it clears the text fields so they can
+        NameField.setText("");                          //input their new object, then they can hit save
+        PriceField.setText("");
+        TypeField.setText("");
+
     }
 
 
