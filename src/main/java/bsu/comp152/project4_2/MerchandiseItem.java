@@ -1,6 +1,6 @@
 package bsu.comp152.project4_2;
 
-public class MerchandiseItem {
+public class MerchandiseItem extends HelloController{
     private ItemType taxibleType;
     private String Name;
     private double price;
@@ -22,4 +22,5 @@ public class MerchandiseItem {
     public ItemType getTaxibleType(){
         return taxibleType;
     }
+
 }

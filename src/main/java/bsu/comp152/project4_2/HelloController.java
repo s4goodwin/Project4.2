@@ -10,6 +10,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
+import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -27,17 +29,31 @@ public class HelloController extends Store implements Initializable {
     @FXML
     private ListView<MerchandiseItem> ListStock;
     private ArrayList<MerchandiseItem> Stock;
-    private String Name="corn";
-    private double Price=10;
-    private ItemType ItemType= bsu.comp152.project4_2.ItemType.WICFood;
+    private String Name="Corn";                                          //I had to do this because i couldnt get the
+    private double Price=10;                                               //arraylist to populate, assigned one object
+    private ItemType ItemType= bsu.comp152.project4_2.ItemType.WICFood; //so i could continue
 
     public void loadData(){
-        Stock=new ArrayList<MerchandiseItem>(getStock());
+        Stock=new ArrayList<MerchandiseItem>(getStock());        //assigns a new arraylist<merchandiceitem> to Stock
         Stock.add(new MerchandiseItem(Name, Price, ItemType));
-        ObservableList<MerchandiseItem> dataToShow=
-                FXCollections.observableArrayList(Stock);
+        ObservableList<MerchandiseItem> dataToShow=             //turns arraylist into a observable list, assigns it name
+                FXCollections.observableArrayList(Stock);       //datatoshow, then use data to show to set items in the listview
         ListStock.setItems(dataToShow);
     }
+
+    @FXML
+    public void saveButtonPressed(ActionEvent event){   //for the save button
+        var currentNameText=NameField.getText();  //creates variable for each textfield, and gets the text from it
+        var currentPriceText=PriceField.getText();
+        var currentItemType=TypeField.getText();
+        Object objName=currentNameText;                 //converted from string to object so i could add it to Stock
+        Object objPrice=currentPriceText;
+        Object objType=currentItemType;
+        Stock.add((MerchandiseItem) objName);       //added each field into stock
+        Stock.add((MerchandiseItem) objPrice);
+        Stock.add((MerchandiseItem) objType);
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -51,5 +67,8 @@ public class HelloController extends Store implements Initializable {
             }
         });
 
+    }
+    public ArrayList<MerchandiseItem> getStock() {  //getter for stock
+        return Stock;
     }
 }
