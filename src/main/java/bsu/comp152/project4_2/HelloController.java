@@ -27,9 +27,13 @@ public class HelloController extends Store implements Initializable {
     @FXML
     private ListView<MerchandiseItem> ListStock;
     private ArrayList<MerchandiseItem> Stock;
+    private String Name="corn";
+    private double Price=10;
+    private ItemType ItemType= bsu.comp152.project4_2.ItemType.WICFood;
 
     public void loadData(){
         Stock=new ArrayList<MerchandiseItem>(getStock());
+        Stock.add(new MerchandiseItem(Name, Price, ItemType));
         ObservableList<MerchandiseItem> dataToShow=
                 FXCollections.observableArrayList(Stock);
         ListStock.setItems(dataToShow);
